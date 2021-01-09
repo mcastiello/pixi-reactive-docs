@@ -21,7 +21,6 @@ const CodeViewer: React.FC<{src?: string, children?: ReactText}> = ({ src, child
   }, [children]);
 
   return (
-    // @ts-ignore
     <SyntaxHighlighter style={darcula} language={'tsx'} showLineNumbers>
       {code}
     </SyntaxHighlighter>

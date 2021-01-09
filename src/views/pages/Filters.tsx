@@ -12,7 +12,8 @@ export const filterProps: PropsDefinition = [
     false,
     'number',
     '0',
-    'Some filters require extra space to breath such as a blur. Increasing this will add extra width and height to the bounds of the object that the filter is applied to'
+    'Some filters require extra space to breath such as a blur. Increasing this will add extra width and height to the ' +
+    'bounds of the object that the filter is applied to'
   ],
   ['resolution', false, 'number', '1', 'The resolution of the filter']
 ];

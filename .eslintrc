@@ -18,7 +18,7 @@
     "jest": true
   },
   "rules": {
-    "quotes": ["error", "single"],
+    "quotes": ["warn", "single"],
     "max-len": ["error", { "code": 145, "ignoreUrls": true }],
     "react/display-name": "off",
     "react/prop-types": "off",
@@ -35,6 +35,9 @@
     "operator-linebreak": 0,
     "function-paren-newline": 0,
     "no-nested-ternary": 0,
+    "sonarjs/no-duplicate-string": 0,
+    "react/no-unescaped-entities": 0,
+    "no-constant-condition": 0,
     "spellcheck/spell-checker": [
       "error",
       {
@@ -43,6 +46,13 @@
         "identifiers": true,
         "lang": "en_GB",
         "skipWords": [
+          "const",
+          "colors",
+          "darcula",
+          "async",
+          "unshift",
+          "calc",
+          "navbar",
           "webpack",
           "plugins",
           "antialias",
@@ -53,6 +63,7 @@
           "ctrl",
           "attn",
           "impactable",
+          "tween",
           "rect",
           "sizer",
           "args",

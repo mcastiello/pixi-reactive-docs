@@ -37,7 +37,9 @@ const PredatorEffectDoc: React.FC = () => {
   return (
     <>
       <StyledTitle>PredatorEffect</StyledTitle>
-      <StyledIntroduction>This effect will make it looks like the scene is seen through the eyes of a Predator (you know the movie, right?).</StyledIntroduction>
+      <StyledIntroduction>
+        This effect will make it looks like the scene is seen through the eyes of a Predator (you know the movie, right?).
+      </StyledIntroduction>
       <Block style={{ textAlign: 'right' }}>
         <span style={{ marginRight: 10 }}>{'Toggle Filter'}</span>
         <Toggle defaultChecked onChange={toggle} />
