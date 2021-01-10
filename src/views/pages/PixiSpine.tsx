@@ -13,7 +13,7 @@ const textures = {
 export const PixiSpineExample: React.FC = () => {
   return (
     <PixiCanvas height={300} textures={textures}>
-      {/*<PixiSpine resource={'heroes'} />*/}
+      {/**<PixiSpine resource={'heroes'} />**/}
     </PixiCanvas>
   );
 };

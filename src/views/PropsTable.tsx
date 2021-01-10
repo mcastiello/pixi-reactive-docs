@@ -1,5 +1,5 @@
 import { Block, Icon } from 'framework7-react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { getComponentUrl, getPageChildren, Pages } from '../pages';
 import { StyledTable, StyledLink, StyledTableContainer } from './StyledComponents';
