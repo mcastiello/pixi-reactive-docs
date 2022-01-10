@@ -8630,10 +8630,10 @@ pixi-reactive-tween@^0.1.0:
   dependencies:
     gsap "^3.5.1"
 
-pixi-reactive@^1.3.6:
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/pixi-reactive/-/pixi-reactive-1.3.6.tgz#b853d4416f50fcd5902dab517e5680321a7aa720"
-  integrity sha512-qHMn10/y7ca/bmYyRYWw2vMiDEaqdFDH784tUBSXxyfdmqTVVa3y9uCcr7csKtSSb3z1OJEXUOZRzErNK5Q86A==
+pixi-reactive@^1.3.14:
+  version "1.3.14"
+  resolved "https://registry.yarnpkg.com/pixi-reactive/-/pixi-reactive-1.3.14.tgz#992ef3edb4a5056441d977f0fd03c321662b1e23"
+  integrity sha512-EnpCgDwjm1mJPoWPdv0NEbJ6bL1mkmMFYm7wT0FiO1zExjuoyTiTs4pP+T7TYWtnrW+Y9kdiWaMkQ5XeTM7ylQ==
   dependencies:
     react-virtualized-auto-sizer "^1.0.2"
     uuid "^8.3.1"

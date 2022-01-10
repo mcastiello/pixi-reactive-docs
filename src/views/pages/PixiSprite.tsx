@@ -1,5 +1,5 @@
 import { Block } from 'framework7-react';
-import React from 'react';
+import React, { useCallback, useReducer } from 'react';
 import { PixiCanvas, PixiSprite, PixiTexture, PixiTilingSprite } from 'pixi-reactive';
 import { Pages } from '../../pages';
 import CodeViewer from '../CodeViewer';
@@ -7,6 +7,8 @@ import ComponentLink from '../ComponentLink';
 import PropsTable, { PropsDefinition, StyledCode } from '../PropsTable';
 import { StyledTitle, StyledSectionTitle, StyledIntroduction } from '../StyledComponents';
 import { genericEvents, genericProps } from './PixiContainer';
+import { PixiParticles } from 'pixi-reactive-particles';
+import ThrusterConfig from '../thruster.json';
 
 export const spriteProps: PropsDefinition = [
   [
@@ -55,6 +57,46 @@ const PixiSpriteExample: React.FC = () => {
   );
 };
 
+type EngineState = {
+  active: boolean,
+  position: number
+};
+
+enum EngineActions {
+  Navigate,
+  Start,
+  Stop
+}
+
+const engineReducer = (state: EngineState, action: EngineActions) => {
+  switch (action){
+    case EngineActions.Navigate:
+      return state.active ? { ...state, position: state.position - 1 } : state;
+    case EngineActions.Start:
+      return {...state, active: true};
+    case EngineActions.Stop:
+      return {...state, active: false };
+  }
+}
+
+const PixiClickSpriteExample: React.FC = () => {
+  const [engineState, update] = useReducer(engineReducer, { position: 0, active: false });
+  const {position, active} = engineState;
+
+  const toggle = useCallback(() => update(active ? EngineActions.Stop : EngineActions.Start), [active]);
+  const navigate = useCallback(() => update(EngineActions.Navigate), []);
+
+  return (
+    <PixiCanvas textures={textures} onUpdate={navigate}>
+      <PixiTilingSprite texture={'galaxy'} tileX={position} />
+      <PixiSprite alignY={0.5} x={20} buttonMode={true} interactive={true} onClick={toggle}>
+        <PixiTexture src={'./static/assets/spaceship.png'} />
+        {active && <PixiParticles textures={'particle fire'} config={ThrusterConfig} />}
+      </PixiSprite>
+    </PixiCanvas>
+  );
+};
+
 const PixiSpriteDoc: React.FC = () => {
   return (
     <>
@@ -74,6 +116,17 @@ const PixiSpriteDoc: React.FC = () => {
       </Block>
       <Block>
         <CodeViewer src={'./static/examples/PixiSpriteExample.tsx'} />
+      </Block>
+      <StyledIntroduction>
+        You can also make them clickable setting both the
+        properties <StyledCode>buttonMode</StyledCode> and <StyledCode>interactive</StyledCode>. In the example
+        below you can click on the SpaceShip to start and stop its engine and trek through the galaxy :-)
+      </StyledIntroduction>
+      <Block style={{ height: 300 }}>
+        <PixiClickSpriteExample />
+      </Block>
+      <Block>
+        <CodeViewer src={'./static/examples/PixiSpriteClickExample.tsx'} />
       </Block>
       <StyledSectionTitle>Properties</StyledSectionTitle>
       <PropsTable props={spriteProps} />
