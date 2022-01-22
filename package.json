@@ -40,7 +40,7 @@
     "framework7": "^5.7.2",
     "framework7-icons": "^3.0.1",
     "framework7-react": "^5.7.2",
-    "pixi-reactive": "^1.3.14",
+    "pixi-reactive": "^1.3.22",
     "pixi-reactive-particles": "^0.1.3",
     "pixi-reactive-tween": "^0.1.0",
     "pixi.js": "^5.3.7",
