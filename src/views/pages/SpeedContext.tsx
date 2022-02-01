@@ -1,5 +1,5 @@
 import { Block, Link } from 'framework7-react';
-import { PixiCanvas, PixiTilingSprite, SpeedContext } from 'pixi-reactive';
+import { PixiCanvas, PixiHtmlContainer, PixiTilingSprite, SpeedContext } from 'pixi-reactive';
 import React, { useCallback, useContext, useState } from 'react';
 import styled from 'styled-components';
 import { Pages } from '../../pages';
@@ -50,23 +50,24 @@ const SpeedController: React.FC = () => {
   }, [running, play, pause]);
 
   return (
-    <>
+    <PixiHtmlContainer>
       <StyledContainer>
         <div style={{ display: 'absolute' }}>Speed: {speed}</div>
         <StyledButton iconOnly iconF7={'backward_fill'} onClick={decrease} />
         <StyledButton iconOnly iconF7={'playpause_fill'} onClick={togglePlayPause} />
         <StyledButton iconOnly iconF7={'forward_fill'} onClick={increase} />
       </StyledContainer>
-    </>
+    </PixiHtmlContainer>
   );
 };
 
 const SpeedContextExample: React.FC = () => {
   return (
     <PixiCanvas textures={textures}>
-      <PixiTilingSprite texture={'galaxy'} />
+      <PixiTilingSprite texture={'galaxy'}>
+        <SpeedController />
+      </PixiTilingSprite>
       <Ship />
-      <SpeedController />
     </PixiCanvas>
   );
 };

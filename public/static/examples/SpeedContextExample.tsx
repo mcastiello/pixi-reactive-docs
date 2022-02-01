@@ -1,6 +1,14 @@
 import { Link } from 'framework7-react';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { PixiCanvas, PixiSprite, PixiTilingSprite, SpeedContext, RenderingContext, useAnimatedProgress } from 'pixi-reactive';
+import {
+  PixiCanvas,
+  PixiSprite,
+  PixiTilingSprite,
+  SpeedContext,
+  RenderingContext,
+  useAnimatedProgress,
+  PixiHtmlContainer
+} from 'pixi-reactive';
 import styled from 'styled-components';
 
 const textures = {
@@ -35,14 +43,14 @@ const SpeedController: React.FC = () => {
   }, [running, play, pause]);
 
   return (
-    <>
+    <PixiHtmlContainer>
       <StyledContainer>
         <div style={{ display: 'absolute' }}>Speed: {speed}</div>
         <StyledButton iconOnly iconF7={'backward_fill'} onClick={decrease} />
         <StyledButton iconOnly iconF7={'playpause_fill'} onClick={togglePlayPause} />
         <StyledButton iconOnly iconF7={'forward_fill'} onClick={increase} />
       </StyledContainer>
-    </>
+    </PixiHtmlContainer>
   );
 }
 
@@ -62,9 +70,10 @@ const Ship: React.FC = () => {
 const SpeedContextExample: React.FC = () => {
   return (
     <PixiCanvas textures={textures}>
-      <PixiTilingSprite texture={'galaxy'} />
+      <PixiTilingSprite texture={'galaxy'}>
+        <SpeedController />
+      </PixiTilingSprite>
       <Ship />
-      <SpeedController />
     </PixiCanvas>
   );
 };
